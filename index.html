@@ -1,23 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bootstrap 101 Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<head>
+<title>Dueling Scraps</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- Bootstrap -->
+<link href="css/bootstrap/bootstrap.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap/sticky-footer.css" rel="stylesheet" media="screen">
+
+<link href="css/duelingScraps.css" rel="stylesheet" media="screen">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+</head>
+<body>
+	
+	<div id="wrap">
+	
+		<div id="header" class="textCentered">
+		
+			<br/>
+			<h1>Dueling Scraps</h1>
+			<br/>
+		
+		</div> <!-- #header END -->
+	
+		<div id="pageIndex">
+		
+			<br/>
+			<br/>
+			<br/>
+		
+			<div id="divLogin" class="col-md-offset-3 col-md-6"> <!-- #divLogin -->
+			
+				<input id="inpLogin" class="col-md-12" type="text" name="inpLogin" value="Login">
+				<input id="inpPassword" class="col-md-12" type="text" name="inpPassword" value="Password">
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.index.onLoginClick()">Login</button>
+				
+				<br></br>
+				
+				<button class="col-md-12 textCentered">Register</button>
+			
+			</div> <!-- #divLogin END -->
+		
+		</div> <!-- #pageIndex END -->
+		
+		<div id="pageMainMenu" style="display:none">
+			<!-- 
+			<br/>
+			<br/>
+			<br/>
+		 	-->
+		 	
+		 	<h2 class="col-md-offset-3 col-md-6 textCentered"> Welcome <span id="mainMenuPlayerName"/></h2>
+		 	
+			<div id="divMainMenu" class="col-md-offset-3 col-md-6"> <!-- #divLogin -->
+			
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onSkirmishClick()">Skirmish</button>
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onCampaignClick()">Campaign</button>
+				
+				<br></br>
+				
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onOptionsClick()">Options</button>
+				
+				<br></br>
+				
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onLogoutClick()">Logout</button>
+			
+			</div> <!-- #divLogin END -->
+		
+		</div> <!-- #pageMainMenu END -->
+	
+	</div> <!-- #wrap END -->
+		
+	<div id="footer" class="textCentered">
+	
+		Mesa - GameJamUA 09/2013 - Game made in 48 hours !
+		
+		</br>
+		
+		<!-- CC By NC 3.0 -->
+		<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>
+		
+	</div> <!-- #footer END -->
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-2.0.3.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.js"></script>
+	
+	
+	<script src="js/models/model.player.js"></script>
+	
+	<script src="js/controllers/controller.navigation.js"></script>
+	<script src="js/controllers/controller.index.js"></script>
+	<script src="js/controllers/controller.mainMenu.js"></script>
+	
+</body>
 </html>

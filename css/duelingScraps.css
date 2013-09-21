@@ -1,0 +1,36 @@
+/*
+.center {
+	margin:	auto;
+}
+*/
+.verticalCenter {
+	/*
+	padding-top: auto;
+	padding-bottom: auto;
+	*/
+	
+	/*
+	margin-top: auto;
+	margin-bottom: auto;
+	*/
+	
+	/*
+	vertical-align: middle;
+	*/
+}
+
+.textCentered {
+	text-align: center;
+}
+
+/*	Masterpage	*/
+
+#header {
+	background: #7398FF;
+	border-radius: 8px;
+}
+
+#footer {
+	background: #7398FF;
+	border-radius: 10px;
+}
