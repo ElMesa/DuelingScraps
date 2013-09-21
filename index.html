@@ -9,6 +9,7 @@
 <link href="css/bootstrap/sticky-footer.css" rel="stylesheet" media="screen">
 
 <link href="css/duelingScraps.css" rel="stylesheet" media="screen">
+<link href="css/skirmishBoard.css" rel="stylesheet" media="screen">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -30,9 +31,9 @@
 	
 		<div id="pageIndex">
 		
-			<br/>
-			<br/>
-			<br/>
+			<br></br>
+			<br></br>
+			<br></br>
 		
 			<div id="divLogin" class="col-md-offset-3 col-md-6"> <!-- #divLogin -->
 			
@@ -49,11 +50,6 @@
 		</div> <!-- #pageIndex END -->
 		
 		<div id="pageMainMenu" style="display:none">
-			<!-- 
-			<br/>
-			<br/>
-			<br/>
-		 	-->
 		 	
 		 	<h2 class="col-md-offset-3 col-md-6 textCentered"> Welcome <span id="mainMenuPlayerName"/></h2>
 		 	
@@ -74,6 +70,105 @@
 		
 		</div> <!-- #pageMainMenu END -->
 	
+		<div id="pageSkirmish" style="display:none">
+			
+			<h4 class="col-md-offset-3 col-md-6 textCentered"> Skirmish <span id="skirmish-number"/></h4>
+			
+			<!-- <br></br> -->
+			
+			<div id="divSkirmishBoard" class="col-md-12">
+			
+				<div class="col-md-6">
+					<div id="divBoardTilePlayer" class="skirmishBoardTile">
+						
+						<div>
+							<div id="divPlayer-Player" class="skirmishTileSection skirmishTileSectionPlayer">
+							
+								<h4>Pilot: <span id="skirmish-player-name"></span></h4>
+							
+							</div> <!-- #divPlayer-Player END -->
+						</div>
+						
+						<div>
+							<div id="divMech-Player" class="skirmishTileSection skirmishTileSectionPlayer">
+							
+								<!-- <h3>Mech: <span id="skirmishPlayer-MechName"></span></h3> -->
+								<div class="col-md-12">
+									<h4>Mech:
+										<span id="skirmish-player-mech-model"></span>
+										->
+										<span id="skirmish-player-mech-name"></span>
+									</h4>
+								</div>
+								
+								<div id="skirmish-player-mech-parts"></div>
+								
+								<!-- <div id="PARTS" class="col-md-12"><div><p id="Mech1-part0-type" class="col-md-3">Head</p><p id="Mech1-part0-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part1-type" class="col-md-3">Torso</p><p id="Mech1-part1-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part2-type" class="col-md-3">LeftArm</p><p id="Mech1-part2-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part3-type" class="col-md-3">RightArm</p><p id="Mech1-part3-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part4-type" class="col-md-3">LeftLeg</p><p id="Mech1-part4-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part5-type" class="col-md-3">RightLeg</p><p id="Mech1-part5-model" class="col-md-9">Tier 1</p></div></div> -->
+								
+							</div> <!-- #divMech-Player END -->
+						</div>
+						
+						<div>
+							<div id="divSkills-Player" class="skirmishTileSection skirmishTileSectionPlayer">
+							
+								<button type="button" class="btn btn-lg btn-default">Autocannon</button>
+								<button type="button" class="btn btn-lg btn-default">Laser</button>
+								<button type="button" class="btn btn-lg btn-default">Missile</button>
+								<button type="button" class="btn btn-lg btn-default">Heal</button>
+							
+							</div> <!-- #divSkills-Player END -->
+						</div>
+					
+					</div> <!-- #divBoardTilePlayer EN -->
+				</div>
+				
+				<div class="col-md-6">
+					<div id="divBoardTileEnemy" class="skirmishBoardTile">
+						
+						<div>
+							<div id="divPlayer-Enemy" class="skirmishTileSection skirmishTileSectionEnemy">
+							
+								<h4>Pilot: <span id="skirmish-enemy-name"></span></h4>
+							
+							</div> <!-- #divPlayer-Player END -->
+						</div>
+						
+						<div>
+							<div id="divMech-Enemy" class="skirmishTileSection skirmishTileSectionEnemy">
+							
+								<!-- <h3>Mech: <span id="skirmishPlayer-MechName"></span></h3> -->
+								<div class="col-md-12">
+									<h4>Mech:
+										<span id="skirmish-enemy-mech-model"></span>
+										->
+										<span id="skirmish-enemy-mech-name"></span>
+									</h4>
+								</div>
+								
+								<div id="skirmish-enemy-mech-parts"></div>
+								
+								<!-- <div id="PARTS" class="col-md-12"><div><p id="Mech1-part0-type" class="col-md-3">Head</p><p id="Mech1-part0-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part1-type" class="col-md-3">Torso</p><p id="Mech1-part1-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part2-type" class="col-md-3">LeftArm</p><p id="Mech1-part2-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part3-type" class="col-md-3">RightArm</p><p id="Mech1-part3-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part4-type" class="col-md-3">LeftLeg</p><p id="Mech1-part4-model" class="col-md-9">Tier 1</p></div><div><p id="Mech1-part5-type" class="col-md-3">RightLeg</p><p id="Mech1-part5-model" class="col-md-9">Tier 1</p></div></div> -->
+								
+							</div> <!-- #divMech-Player END -->
+						</div>
+						
+						<div>
+							<div id="divSkills-Enemy" class="skirmishTileSection skirmishTileSectionEnemy">
+							
+								<button type="button" class="btn btn-lg btn-default">Autocannon</button>
+								<button type="button" class="btn btn-lg btn-default">Laser</button>
+								<button type="button" class="btn btn-lg btn-default">Missile</button>
+								<button type="button" class="btn btn-lg btn-default">Heal</button>
+							
+							</div> <!-- #divSkills-Player END -->
+						</div>
+					
+					</div> <!-- #divBoardTileEnemy EN -->
+				</div>
+			
+			</div> <!-- #divSkirmishBoard EN -->
+			
+		</div> <!-- #pageSkirmish END -->
 	</div> <!-- #wrap END -->
 		
 	<div id="footer" class="textCentered">
@@ -93,11 +188,19 @@
 	<script src="js/bootstrap.js"></script>
 	
 	
+	
+	<script src="js/models/model.mechPart.js"></script>
+	<script src="js/models/model.mech.js"></script>
 	<script src="js/models/model.player.js"></script>
+	<script src="js/models/model.skirmish.js"></script>
 	
 	<script src="js/controllers/controller.navigation.js"></script>
+	
 	<script src="js/controllers/controller.index.js"></script>
 	<script src="js/controllers/controller.mainMenu.js"></script>
+	<script src="js/controllers/controller.skirmish.js"></script>
+	
+	<script src="js/views/view.mechPart.js"></script>
 	
 </body>
 </html>

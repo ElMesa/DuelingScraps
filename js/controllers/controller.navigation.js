@@ -12,6 +12,7 @@ navigation.navigate = function navigate(idFrom, idTo) {
 	
 	if(idTo == "#pageIndex")		targetController = app.controllers.index;
 	else if(idTo == "#pageMainMenu")	targetController = app.controllers.mainMenu;
+	else if(idTo == "#pageSkirmish")	targetController = app.controllers.skirmish;
 	
 	//Ocultamos pageIndex
 	$(idFrom).fadeOut(navigation.fadeTime);

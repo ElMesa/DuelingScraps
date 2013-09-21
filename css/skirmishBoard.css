@@ -1,0 +1,46 @@
+/*	BoardTile */
+
+.skirmishBoardTile {
+	border-radius: 10px;
+	
+	padding: 15px;
+}
+
+#divBoardTilePlayer {
+	background-color: #73D973;
+}
+#divBoardTileEnemy {
+	background-color: #D97373;
+}
+
+/*	BoardTile END */
+
+
+
+/*	Board - TileSection */
+.skirmishTileSection {
+	
+	background-color: #5BA85B;
+	border-radius: 10px;
+	
+	padding: 5px;
+	margin: 5px;
+	
+}
+
+.skirmishTileSectionPlayer {
+	background-color: #5BA85B;
+}
+.skirmishTileSectionEnemy {
+	background-color: #A85B5B;
+}
+
+/*	Board - TileSection END*/
+
+.skirmish-shield {
+	background-color: #0084D6;
+}
+
+.skirmish-hull {
+	background-color: #FC4949;
+}

@@ -7,6 +7,8 @@ var navigation = app.controllers.navigation;
 
 controller.run = function run(fadeTime) {
 	
+	var controller = app.controllers.index;
+	
 	controller.init();
 	
 	$("#pageIndex").fadeIn(fadeTime);
@@ -15,8 +17,11 @@ controller.run = function run(fadeTime) {
 controller.onLoginClick = function onLoginClick() {
 
 	var player = app.models.Player;
-		
-	loginSuccess = 		player.login($("#inpLogin").val(), $("#inpPassword").val())
+	
+	var playerName = $("#inpLogin").val();
+	var playerPassword = $("#inpPassword").val();
+	
+	loginSuccess = 		player.login(playerName, playerPassword);
 	
 	if(loginSuccess)	navigation.navigate("#pageIndex", "#pageMainMenu");
 	else  { //login failed

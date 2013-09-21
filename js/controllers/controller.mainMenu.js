@@ -7,6 +7,8 @@ var navigation = app.controllers.navigation;
 
 controller.run = function run(fadeTime) {
 	
+	var controller = app.controllers.mainMenu;
+	
 	controller.init();
 	
 	$("#pageMainMenu").fadeIn(fadeTime);
@@ -16,10 +18,19 @@ controller.init = function init() {
 	
 	var player = app.models.Player;
 	
-	//controller.playerName = $("#mainMenuPlayerName");
+	controller.playerName = $("#mainMenuPlayerName");
 	
-	//controller.playerName.html(player.name);
-	$("#mainMenuPlayerName").html(player.name);
+	controller.playerName.html(player.name);
+}
+
+/*****************************************************************************
+ * 
+ * 			ON CLICK
+ * 
+ ******************************************************************************/
+
+controller.onSkirmishClick = function onSkirmishClick() {
+	navigation.navigate("#pageMainMenu", "#pageSkirmish");
 }
 
 controller.onLogoutClick = function onLogoutClick() {
