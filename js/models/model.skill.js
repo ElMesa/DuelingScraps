@@ -12,6 +12,8 @@ var Skill = app.models.Skill;
 
 Skill.nextId = 1;
 
+Skill.mech =				undefined; //{Mech}						from Relation {Mech}	1 <-haves-> 0..*	{Skill}
+
 Skill.id =					undefined; //{number}
 Skill.name =				undefined; //{string}
 Skill.shieldPenetration = 	undefined; //{number}
@@ -23,9 +25,11 @@ Skill.effectAmount =		undefined; //{number}
  * 			METHODS
  * 
  ******************************************************************************/
-Skill.create = function create(name, effectAmount, shieldPenetration){
+Skill.create = function create(mech, name, effectAmount, shieldPenetration){
 		
 	var skill = {};
+	
+	skill.mech = mech;
 	
 	skill.id = Skill.nextId++;
 	skill.name =				name;
@@ -57,16 +61,19 @@ Skill.create = function create(name, effectAmount, shieldPenetration){
 				damageTresspasingShield = targetPart.shield * -1; 
 				targetPart.shield = 0;
 			}
-			
-			targetPart.hull -= hullDamage + damageTresspasingShield;
-			
-			if(targetPart.hull <= 0) {
-				targetPart.isDestroyed = true;
-				targetPart.hull = 0;
-				
-				targetPart.onDestroy();
-			}
 		}
+		
+		targetPart.hull -= hullDamage + damageTresspasingShield;
+		
+		if(targetPart.hull <= 0) {
+			targetPart.isDestroyed = true;
+			targetPart.hull = 0;
+			
+			targetPart.onDestroy();
+		}
+		
+		//Inform Skirmish controller
+		mech.player.activeSkirmish.controller.onMechPartModified(targetPart);
 		
 		//TODO - 2 - Sustituir, el return, por un sistema de eventos: controlador.eventos.onShieldDepleted(player, part) y asi para el hull curaciones etc
 		return targetPart;

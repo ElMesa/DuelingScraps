@@ -4,12 +4,17 @@
 <title>Dueling Scraps</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Bootstrap -->
+<!-- Bootstrap	CSS	-->
 <link href="css/bootstrap/bootstrap.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap/sticky-footer.css" rel="stylesheet" media="screen">
 
+<!-- JQueryUI	CSS	-->
+<link href="css/themes/base/jquery-ui.css" rel="stylesheet" media="screen">
+
+<!-- App	CSS	-->
 <link href="css/duelingScraps.css" rel="stylesheet" media="screen">
 <link href="css/skirmishBoard.css" rel="stylesheet" media="screen">
+
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -37,13 +42,15 @@
 		
 			<div id="divLogin" class="col-md-offset-3 col-md-6"> <!-- #divLogin -->
 			
-				<input id="inpLogin" class="col-md-12" type="text" name="inpLogin" value="Login">
-				<input id="inpPassword" class="col-md-12" type="text" name="inpPassword" value="Password">
-				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.index.onLoginClick()">Login</button>
+				<input id="inpLogin" class="col-md-12" type="text" name="inpLogin" value="Choose your name !">
+				<input id="inpPassword" class="col-md-12" type="text" name="inpPassword" value="Password" style="display:none">
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.index.onLoginClick()">Start !</button>
 				
+				<!-- 
 				<br></br>
 				
 				<button class="col-md-12 textCentered">Register</button>
+				 -->
 			
 			</div> <!-- #divLogin END -->
 		
@@ -56,15 +63,23 @@
 			<div id="divMainMenu" class="col-md-offset-3 col-md-6"> <!-- #divLogin -->
 			
 				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onSkirmishClick()">Skirmish</button>
-				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onCampaignClick()">Campaign</button>
+				<!-- <button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onCampaignClick()">Campaign</button> -->
 				
 				<br></br>
 				
-				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onOptionsClick()">Options</button>
+				<!--
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onOptionsClick()">Options</button> 
 				
 				<br></br>
+				-->
 				
-				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onLogoutClick()">Logout</button>
+				<button class="col-md-12 textCentered" onclick="javascript:app.controllers.mainMenu.onLogoutClick()">Change player</button>
+				
+				<!-- 
+				<h3 class="col-md-offset-3 col-md-6 textCentered">Skirmishes played: <span id="mainMenuSkirmishesPlayed"/></span></h3>
+				
+				<div id="skirmishesLog"></div>
+				 -->
 			
 			</div> <!-- #divLogin END -->
 		
@@ -155,10 +170,10 @@
 						<div>
 							<div id="divSkills-Enemy" class="skirmishTileSection skirmishTileSectionEnemy">
 							
-								<button type="button" class="btn btn-lg btn-default">Autocannon</button>
-								<button type="button" class="btn btn-lg btn-default">Laser</button>
-								<button type="button" class="btn btn-lg btn-default">Missile</button>
-								<button type="button" class="btn btn-lg btn-default">Heal</button>
+								<button type="button" class="btn btn-lg btn-default" disbled>Autocannon</button>
+								<button type="button" class="btn btn-lg btn-default" disbled>Laser</button>
+								<button type="button" class="btn btn-lg btn-default" disbled>Missile</button>
+								
 							
 							</div> <!-- #divSkills-Player END -->
 						</div>
@@ -182,11 +197,23 @@
 		
 	</div> <!-- #footer END -->
 	
+	<!---------------------------------------->
+	<!-- 			DIALOGS 				-->
+	<!---------------------------------------->
+	<div id="dialog-win" title="You win !" class="divBoardTilePlayer" style="display:none"> Congratulations !</div>
+	
+	<div id="dialog-loose" title="You loose !" class="divBoardTileEnemy" style="display:none"> Maybe next time... !</div>
+	
+	
+	<!---------------------------------------->
+	<!-- 			JS INCLUDES 			-->
+	<!---------------------------------------->
+	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="js/jquery-2.0.3.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.js"></script>
-	
+	<script src="js/jquery-ui.js"></script>
 	
 	
 	<script src="js/models/model.skill.js"></script>

@@ -58,6 +58,7 @@ controller.init = function init() {
 	var viewSkill = app.views.Skill;
 	
 	var player = Player.activePlayer;
+	player.resetMech();
 	
 	//Creamos el skirmish
 	controller.skirmish = Skirmish.create(controller, player);
@@ -94,12 +95,22 @@ controller.init = function init() {
 	controller.enemy.name.html			(enemy.name);
 	controller.enemy.mech.model.html	(enemy.mech.model);
 	controller.enemy.mech.name.html		(enemy.mech.name);
-	controller.enemy.mech.parts.html	(viewMechPart.getHTMLParts(enemy.mech, true));
-	controller.enemy.mech.skills.html	(viewSkill.getHTML(enemy.mech));
+	controller.enemy.mech.parts.html	(viewMechPart.getHTMLParts(enemy.mech));
+	//controller.enemy.mech.skills.html	(viewSkill.getHTML(enemy.mech));
 }
 
 controller.onFinish = function onFinish() {
-	alert("Finished!");
+	
+	var Player =		app.models.Player;
+	var view =			app.views.skirmish;
+	
+	var player =	Player.activePlayer;
+	var skirmish =	player.activeSkirmish;
+	
+	if(skirmish.winner == player)	view.showDialogWin();
+	else 							view.showDialogLoose();
+	
+	
 }
 
 controller.onClickSkill = function onClickSkill(mechId, skillId) {
@@ -115,9 +126,19 @@ controller.onClickSkill = function onClickSkill(mechId, skillId) {
 	var mech =	Skirmish.getMechById(	skirmish, mechId);
 	var skill = Skirmish.getSkillById(	skirmish, skillId)
 	
-	var targetPart = skill.useOn(mech.targetMech, mech.targetPart);
+	if(!skirmish.isFinished) skill.useOn(mech.targetMech, mech.targetPart);
 	
-	view.updateMechPart(targetPart);
+	//view.updateMechPart(targetPart);
 	
 }
 
+controller.onMechPartModified = function onMechPartModified(mechPart) {
+	view.updateMechPart(mechPart);
+}
+
+controller.onBackToMainMenu = function onBackToMainMenu() {
+	
+	var navigation = app.controllers.navigation;
+	
+	navigation.navigate("#pageSkirmish", "#pageMainMenu");
+}

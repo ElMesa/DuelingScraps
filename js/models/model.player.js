@@ -48,9 +48,30 @@ Player.create = function create(name, password) {
 	
 	/*****************************************************************************
 	 * 
+	 * 			METHODS
+	 * 
+	 ******************************************************************************/
+	player.resetMech = function resetMech() {
+		player.mech = Mech.create(player, "Atlas Tier 1", "MyAtlas");
+	}
+	
+	/*****************************************************************************
+	 * 
 	 * 			EVENTS
 	 * 
 	 ******************************************************************************/
+	player.onExecuteAction = function onExecuteAction() {
+		
+		var mech =			player.mech;
+		var skills =		player.mech.skills;
+		
+		//Pick random skill
+		var skillNumber =	Math.floor(Math.random() * skills.length);
+		var skill = 		skills[skillNumber];
+		
+		//Use it
+		skill.useOn(mech.targetMech);
+	}
 	
 	return player;
 }

@@ -16,11 +16,30 @@ controller.run = function run(fadeTime) {
 
 controller.init = function init() {
 	
-	var player = app.models.Player;
+	var player = app.models.Player.activePlayer;
 	
-	controller.playerName = $("#mainMenuPlayerName");
+	controller.playerName = 		$("#mainMenuPlayerName");
+	//controller.skirmishesCount =	$("#mainMenuSkirmishesPlayed");
+	//controller.skirmishesLog =		$("#skirmishesLog");
 	
 	controller.playerName.html(player.name);
+	//controller.skirmishesCount.html(player.skirmishes.length);
+	
+	/*
+	var html = "<br></br><br></br>";
+	var i;
+	var skirmishes = player.skirmishes;
+	for(i = 0; i < skirmishes.length; i++) {
+		html += '<br></br><div >Skirmish ' + skirmishes[i].number + ": ";
+		
+		if(skirmishes[i].winner == player)	html += "You WON !";
+		else								html += "You ... loosed ...";
+		
+		html += '</div>';
+	}
+	controller.skirmishesLog.html(html);
+	*/
+
 }
 
 /*****************************************************************************

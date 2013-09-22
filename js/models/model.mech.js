@@ -41,7 +41,7 @@ Mech.create = function create(player, model, name) {
 	mech.id = Mech.nextId++;
 	
 	mech.model =	model;
-	mech.name =		name;
+	mech.name =		player.name + " " + name;
 	
 	mech.parts = [];
 	mech.parts.push(MechPart.create(mech, "Head","Tier 1"));
@@ -52,10 +52,10 @@ Mech.create = function create(player, model, name) {
 	mech.parts.push(MechPart.create(mech, "RightLeg","Tier 1"));
 	
 	mech.skills = [];
-	mech.skills.push(Skill.create("Autocannon", 15, 1));
-	mech.skills.push(Skill.create("Laser", 20, 0));
-	mech.skills.push(Skill.create("Missile", 50, 0.5));
-	mech.skills.push(Skill.create("DebugNuke", 100, 1));
+	mech.skills.push(Skill.create(mech, "Autocannon", 15, 1));
+	mech.skills.push(Skill.create(mech, "Laser", 20, 0));
+	mech.skills.push(Skill.create(mech, "Missile", 50, 0.5));
+	//mech.skills.push(Skill.create(mech, "DebugNuke", 100, 1));
 	//mech.skills.push(Skill.create("Heal", 20, 0));
 	
 	mech.targetMech =	undefined; //Defined on skirmish by {controller.Skirmish}

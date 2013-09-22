@@ -9,7 +9,7 @@ controller.run = function run(fadeTime) {
 	
 	var controller = app.controllers.index;
 	
-	controller.init();
+	//controller.init();
 	
 	$("#pageIndex").fadeIn(fadeTime);
 }

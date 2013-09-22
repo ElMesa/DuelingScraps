@@ -66,8 +66,18 @@ Skirmish.create = function create(controller, player) {
 	 * 			METHODS
 	 * 
 	 ******************************************************************************/
+
 	skirmish.run = function run() {
-		skirmish.updateId = setInterval(skirmish.onUpdate, 2000);
+		
+		this.updateId = setInterval(function() {
+			
+			var Player = app.models.Player;
+			
+			var skirmish = Player.activePlayer.activeSkirmish;
+						
+			skirmish.enemy.onExecuteAction();
+			
+		}, 1000);
 	}
 	
 	/*****************************************************************************
@@ -75,14 +85,14 @@ Skirmish.create = function create(controller, player) {
 	 * 			EVENTS
 	 * 
 	 ******************************************************************************/
-	skirmish.onUptade = function onUpdate() {
-		
-		console.log("model.Skirmish updated !");
-	}
+
 	
 	skirmish.onDestroyMech = function(playerAtacked, mechDestroyed) {
 		
 		console.log("DestroyedMech: Skirmish %O PlayerAtacked %O MechDestroyed %O", this, playerAtacked, mechDestroyed);
+		
+		if(playerAtacked == this.enemy)		this.winner = this.player;
+		else								this.winner = this.enemy;
 		
 		skirmish.onFinish();
 	}
@@ -90,9 +100,6 @@ Skirmish.create = function create(controller, player) {
 	skirmish.onFinish = function onFinish() {
 		
 		this.isFinished = true;
-		
-		if(playerAtacked == this.enemy)		this.winner = this.player;
-		else								this.winner = this.enemy;
 		
 		this.player.skirmishes.push($.extend({},this));	//Almacenamos el log del Skirmish
 		

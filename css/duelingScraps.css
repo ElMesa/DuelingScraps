@@ -30,7 +30,16 @@
 	border-radius: 8px;
 }
 
+#wrap {
+	background: #4C7AFC;
+}
+
 #footer {
 	background: #7398FF;
 	border-radius: 10px;
+}
+
+/* Hide close (X) button from dialogs*/
+.ui-dialog-titlebar-close {
+  visibility: hidden;
 }
