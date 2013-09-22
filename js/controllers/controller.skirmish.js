@@ -21,6 +21,7 @@ controller.player.mech = {};
 controller.player.mech.model = 	undefined; //{DOMElement}
 controller.player.mech.name = 	undefined; //{DOMElement}
 controller.player.mech.parts = 	undefined; //{DOMElement}
+controller.player.mech.skills = undefined; //{DOMElement}
 
 controller.enemy = {};
 controller.enemy.name = 		undefined; //{DOMElement}
@@ -28,6 +29,7 @@ controller.enemy.mech = {};
 controller.enemy.mech.model = 	undefined; //{DOMElement}
 controller.enemy.mech.name = 	undefined; //{DOMElement}
 controller.enemy.mech.parts = 	undefined; //{DOMElement}
+controller.enemy.mech.skills =	undefined; //{DOMElement}
 
 /*****************************************************************************
  * 
@@ -41,6 +43,10 @@ controller.run = function run(fadeTime) {
 	controller.init();
 	
 	$("#pageSkirmish").fadeIn(fadeTime);
+	
+	setTimeout(function() {
+		controller.skirmish.run();
+	}, fadeTime);
 }
 
 controller.init = function init() {
@@ -49,11 +55,12 @@ controller.init = function init() {
 	var Player = app.models.Player;
 	var controller = app.controllers.skirmish;
 	var viewMechPart = app.views.MechPart;
+	var viewSkill = app.views.Skill;
 	
 	var player = Player.activePlayer;
 	
 	//Creamos el skirmish
-	controller.skirmish = Skirmish.create(player);
+	controller.skirmish = Skirmish.create(controller, player);
 	
 	var enemy = controller.skirmish.enemy;
 		
@@ -66,6 +73,7 @@ controller.init = function init() {
 	controller.player.mech.model = 	$("#skirmish-player-mech-model");
 	controller.player.mech.name = 	$("#skirmish-player-mech-name");
 	controller.player.mech.parts = 	$("#skirmish-player-mech-parts");
+	controller.player.mech.skills = $("#divSkills-Player");	
 	
 	controller.enemy = {};
 	controller.enemy.name = 		$("#skirmish-enemy-name");
@@ -73,16 +81,43 @@ controller.init = function init() {
 	controller.enemy.mech.model = 	$("#skirmish-enemy-mech-model");
 	controller.enemy.mech.name = 	$("#skirmish-enemy-mech-name");
 	controller.enemy.mech.parts = 	$("#skirmish-enemy-mech-parts");
+	controller.enemy.mech.skills =	$("#divSkills-Enemy");
 	
 	controller.skirmishNumber.html(Skirmish.number);
 	
 	controller.player.name.html			(player.name);
 	controller.player.mech.model.html	(player.mech.model);
 	controller.player.mech.name.html	(player.mech.name);
-	controller.player.mech.parts.html	(viewMechPart.getHTML(player.mech));
+	controller.player.mech.parts.html	(viewMechPart.getHTMLParts(player.mech));
+	controller.player.mech.skills.html	(viewSkill.getHTML(player.mech));
 	
 	controller.enemy.name.html			(enemy.name);
 	controller.enemy.mech.model.html	(enemy.mech.model);
 	controller.enemy.mech.name.html		(enemy.mech.name);
-	controller.enemy.mech.parts.html	(viewMechPart.getHTML(enemy.mech));
+	controller.enemy.mech.parts.html	(viewMechPart.getHTMLParts(enemy.mech, true));
+	controller.enemy.mech.skills.html	(viewSkill.getHTML(enemy.mech));
 }
+
+controller.onFinish = function onFinish() {
+	alert("Finished!");
+}
+
+controller.onClickSkill = function onClickSkill(mechId, skillId) {
+	
+	var Player =		app.models.Player;
+	var Skirmish =		app.models.Skirmish;
+	var controller = 	app.controllers.skirmish;
+	var view =			app.views.skirmish;
+	
+	var player = Player.activePlayer;
+	var skirmish = player.activeSkirmish;
+	
+	var mech =	Skirmish.getMechById(	skirmish, mechId);
+	var skill = Skirmish.getSkillById(	skirmish, skillId)
+	
+	var targetPart = skill.useOn(mech.targetMech, mech.targetPart);
+	
+	view.updateMechPart(targetPart);
+	
+}
+

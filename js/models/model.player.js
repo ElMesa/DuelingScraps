@@ -18,15 +18,42 @@ Player.id = 		undefined;			//{number}
 Player.name = 		undefined;			//{string}
 Player.password = 	undefined;			//{string}
 Player.isLogged = 	undefined;			//{bool}
-Player.mech =		undefined;			//{Mech}
+Player.mech =		undefined;			//{Mech}		from Relation {Player}	1 <-haves-> 0..*	{Mech}
 Player.skirmishes = [];					//{Skirmish[]}
 Player.skirmishes.nextId = undefined;	//{number}
+Player.activeSkirmish = undefined;		//{Skirmish}
 
 /*****************************************************************************
  * 
  * 			METHODS
  * 
  ******************************************************************************/
+
+Player.create = function create(name, password) {
+	
+	var Player = app.models.Player;
+	
+	//TODO - 1 - Que devuelva un objeto, y crear Player.players[] con los players registrados
+	var player = {};
+	
+	player.id =					Player.nextId++;
+	player.name = 				name;
+	player.password = 			password;
+	
+	player.mech =				Mech.create(player, "Atlas Tier 1", "MyAtlas");
+	
+	player.skirmishes =			[];
+	player.skirmishes.nextId =	1;
+	player.activeSkirmish =		undefined;
+	
+	/*****************************************************************************
+	 * 
+	 * 			EVENTS
+	 * 
+	 ******************************************************************************/
+	
+	return player;
+}
 
 Player.login = function login(name, password) {
 
@@ -60,30 +87,4 @@ Player.logout = function logout() {
 	
 	//TODO - 3 - Comprobar login y pass en "persistencia"
 	Player.isLogged = 	false;
-}
-
-Player.create = function create(name, password) {
-	
-	var Player = app.models.Player;
-	
-	//TODO - 1 - Que devuelva un objeto, y crear Player.players[] con los players registrados
-	var player = {};
-	
-	player.id = Player.nextId++;
-	player.name = 		name;
-	player.password = 	password;
-	
-	player.mech = Mech.create("Atlas Tier 1", "MyAtlas");
-	
-	player.skirmishes = [];
-	player.skirmishes.nextId = 1;
-	
-	/*
-	Player.name = 		name;
-	Player.password = 	password;
-	
-	Player.mech = Mech.create("Atlas Tier 1", "MyAtlas");
-	*/
-	
-	return player;
 }

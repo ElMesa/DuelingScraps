@@ -10,7 +10,7 @@ navigation.navigate = function navigate(idFrom, idTo) {
 	
 	var targetController;
 	
-	if(idTo == "#pageIndex")		targetController = app.controllers.index;
+	if(idTo == "#pageIndex")			targetController = app.controllers.index;
 	else if(idTo == "#pageMainMenu")	targetController = app.controllers.mainMenu;
 	else if(idTo == "#pageSkirmish")	targetController = app.controllers.skirmish;
 	

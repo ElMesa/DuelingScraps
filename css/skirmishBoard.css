@@ -37,6 +37,10 @@
 
 /*	Board - TileSection END*/
 
+.skirmish-GUIBar {
+	width : 150px;
+}
+
 .skirmish-shield {
 	background-color: #0084D6;
 }
